@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
 const router = require('./router'); //Similar to IMPORT
+const mongoose = require('mongoose');
+
+//DB Setup. The below command creates a new DB names auth
+mongoose.connect('mongodb://localhost:auth/auth'); 
 
 //App Setup
 app.use(morgan('combined')); //A logging framework. Logs a request for debugging
@@ -15,8 +19,6 @@ app.use(bodyParser.json({type: '*/*'})); //Parses incoming requests, into JSON
 
 //Server Setup
 router(app); //Refer to router.js
-
-
 
 
 //Define a port. If there is a port defined use that, otherwise use 3090
