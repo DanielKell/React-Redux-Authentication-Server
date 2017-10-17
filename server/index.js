@@ -4,6 +4,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
+const router = require('./router'); //Similar to IMPORT
 
 //App Setup
 app.use(morgan('combined')); //A logging framework. Logs a request for debugging
@@ -12,9 +13,8 @@ app.use(bodyParser.json({type: '*/*'})); //Parses incoming requests, into JSON
 //Nodemon watches our project directory for changes. If there are changes, it
 //updates the server automatically
 
-
-
 //Server Setup
+router(app); //Refer to router.js
 
 
 
